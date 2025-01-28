@@ -26,11 +26,10 @@ int main(void) {
     printf("\n");
 
     // 目盛を表示
-    // TODO: 目盛の表示を直す
     deg = low;
-    while (deg <= now) {
-        printf("####");
-        deg += 10;
+    while (deg <= now+5) {
+        printf("##");
+        deg += 5;
     }
     printf("\n");
 
