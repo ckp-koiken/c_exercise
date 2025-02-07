@@ -2,13 +2,16 @@
 #include <stdlib.h>
 #include <time.h>
 
+int roll_dice(void);
+void wait_enter(void);
+
 int roll_dice(void) {
     return rand() % 6 + 1;
 }
 
 void wait_enter(void) {
     char dummy;
-    printf("サイコロを振るにはエンターキーを推してください ");
+    printf("サイコロを振るにはエンターキーを押してください ");
     scanf("%c", &dummy);
 }
 
