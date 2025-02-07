@@ -27,6 +27,7 @@ char check_pattern(int card) {
         case 4:
             return 'D';
     }
+    return 1;
 }
 
 int check_num(int card) {
