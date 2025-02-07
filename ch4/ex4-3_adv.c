@@ -61,7 +61,8 @@ int main(void) {
     c_card1_num = check_num(c_card1);
     c_card2_num = check_num(c_card2);
     c_cards_total = c_card1_num + c_card2_num;
-    printf("%c%d %c%d 合計%d点\n", c_card1_pat, c_card1_num, c_card2_pat, c_card2_num, c_cards_total); // TODO: エースをAと表現できるようにする
+    printf("%c%d %c%d 合計%d点\n", c_card1_pat, c_card1_num, c_card2_pat, c_card2_num, c_cards_total); 
+    // TODO: エースをAと表現できるようにする
 
     wait_enter();
 
