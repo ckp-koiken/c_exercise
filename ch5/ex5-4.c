@@ -3,8 +3,9 @@
 enum { NMAX = 100 };
 
 int main(void) {
-    int i, n, grams, apple[NMAX];
+    int n, grams, apple[NMAX];
 
+    // 重さを配列に入力
     n = 0;
     printf("重さを入力してください（0で終了）\n");
     while (n < NMAX) {
@@ -16,18 +17,30 @@ int main(void) {
         n++;
     }
     
-    // 選択ソートで整列
+    // ソートで整列
     for (int i = 0; i <= n-2; i++) {
-        int min, tmp;
-        min = i;
+        int tmp;
         for (int j = i+1; j < n; j++) {
-            if (apple[j] < apple[min])
-                min = j;
+            if (apple[j] < apple[i]) {
+                tmp = apple[i];
+                apple[i] = apple[j];
+                apple[j] = tmp;
+            }
         }
-        tmp = apple[i];
-        apple[i] = apple[min];
-        apple[min] = tmp;
     }
+
+    // 別解
+    // for (int i = 0; i <= n-2; i++) {
+    //     int min, tmp;
+    //     min = i;
+    //     for (int j = i+1; j < n; j++) {
+    //         if (apple[j] < apple[i])
+    //             min = j;
+    //     }
+    //     tmp = apple[i];
+    //     apple[i] = apple[min];
+    //     apple[min] = tmp;
+    // }
 
     // 表示
     for (int i = 0; i < n; i++)
