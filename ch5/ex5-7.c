@@ -4,26 +4,29 @@ enum { N = 3 };
 
 int main(void) {
     int a[N][N] = { {0} };
-    int i, j, n, sum, nexti, nextj;
+    int i, j, n, nexti, nextj;
 
     // 魔法陣を作る
-    j = 0;
+    i = 0;
     j = N / 2;
-    for (n = 1; n <= N * N; n++) {
-        a[i][j] = n;
+    for (n = 1; n <= N * N; n++) { // 1からN*Nまで
+        a[i][j] = n;                // 添え字iとjにnを配置する
         // 右上の位置をnexti, nextjに求める
-        if ((nexti = i - 1) < 0)
-            nexti = N - 1;
-        if ((nextj = j + 1) >= N)
-            nextj = 0;
+        nexti = i - 1; // 行を上にずらす
+        nextj = j + 1; // 列を右隣にずらす
+        if (nexti < 0)
+            nexti = N - 1;  // もし上の行が無ければ一番下の行に移す
+        if (nextj >= N)
+            nextj = 0;  // もし右隣が無ければ一番左の列に移す
 
         // 右上に行くか下に行くかの判断
         if (a[nexti][nextj] == 0) {
-            i = nexti;
+            i = nexti;  // そのマスに0が入っていればそのまま数を入れる
             j = nextj;
         } else {
-            if (++i >= N)
-             i = 0;
+            i++; // そのマスに数が入っていれば下の行にずらす
+            if (i >= N)  // 一番下の行を超えるようであれば一番上に戻す
+                i = 0;
         }
     }
 
