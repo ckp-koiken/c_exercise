@@ -22,7 +22,7 @@ int main(void) {
     printf("分母？");
     scanf("%d", &d);
     cancel(&n, &d);
-    printf("訳文すると %d/%d\n", n, d);
+    printf("約分すると %d/%d\n", n, d);
     
     return 0;
 }
