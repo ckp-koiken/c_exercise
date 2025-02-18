@@ -1,7 +1,9 @@
 #include <stdio.h>
 
 void reverse(int *a, int n);
+// void reverse(int a[], int n); // 同様
 
+// void reverse(int *a, int n) { // 同様
 void reverse(int *a, int n) {
     int i, t;
 
