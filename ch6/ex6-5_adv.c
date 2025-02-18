@@ -11,7 +11,6 @@ void reverse_s(int *a) {
         count++;        // 配列の要素数をcountで数える
         i++;
     }
-    printf("i = %d, count = %d\n", i, count);
 
     for (i = 0; i < count/2; i++) {
         t = a[i];
