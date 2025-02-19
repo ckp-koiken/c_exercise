@@ -2,11 +2,15 @@
 
 enum { NCELL = 31 };
 
+void show(char *p);
+
 void show(char *p) {
     for (int i = 0; i < NCELL; i++)
         printf("%c", p[i] ? 'O' : '.');
     printf("\n");
 }
+
+// TODO:セルオートマトンへの理解を深める
 int main(void) {
     char cell[2][NCELL] = {{0}}; // 交互に使う２つの配列；セルは全て０で初期化
     char *curp = cell[0], *nextp = cell[1]; // curpが今の状態、nextpが次の状態
@@ -20,6 +24,9 @@ int main(void) {
         for (int i = 1; i < NCELL - 1; i++) {  // 端を除くセルについて
             char curstat, nextstat, *tmpp;
             // ビットに関する演算子を使って、近傍を3桁の2進数に組む
+            // 状態遷移のルールは3ビットの整数で表現できる
+            // i-1を2桁、iを1桁シフト、i+1はそのまま
+            // 3桁分をOR(|)して3桁の2進数で表現している
             curstat = curp[i-1] << 2 | curp[i] << 1 | curp [i+1];
             switch (curstat) {  // ルールに従ってこのセルの次の状態を決める
                 case 0: case 2: case 5: case 7: nextstat = 0; break;
