@@ -22,7 +22,7 @@ int main(void) {
     for (int t = 0; t < 10; t++) {  // 時刻を進めるループ
         nextp[0] = nextp[NCELL-1] = 0;  // 端は常に0
         for (int i = 1; i < NCELL - 1; i++) {  // 端を除くセルについて
-            char curstat, nextstat, *tmpp;
+            char curstat, nextstat;
             // ビットに関する演算子を使って、近傍を3桁の2進数に組む
             // 状態遷移のルールは3ビットの整数で表現できる
             // i-1を2桁、iを1桁シフト、i+1はそのまま
