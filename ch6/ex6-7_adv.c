@@ -55,25 +55,31 @@ int main(void) {
     int n = NELEMS(ttime);  // 経路数
 
     // ルート変更のための変数
-    int route_num, route_order;
+    int route_num, route_order, change_time;
 
     calc_ttime(routes, ttime);   // 所要時間を計算してttimeに入れる
     show_routes(routes, ttime); // 一覧を表示
     sort_routes(n, routes, ttime);  // ソート
 
-
-
     show_routes(routes, ttime);  // 結果を表示
 
-    printf("何番目の路線？\n");
-    scanf("%d", &route_num);
-    printf("いくつめの路線？\n");
-    scanf("%d", &route_order);
-
-    // 変更の処理
-    
-    // バブルソートの処理
-
+    for(;;) {
+        printf("何番目の路線？\n");
+        scanf("%d", &route_num);
+        if (route_num == 0) {
+            printf("いってらっしゃい！\n");
+            break;
+        } else {
+            printf("いくつめの路線？\n");
+            scanf("%d", &route_order);
+            printf("%d分->? ", routes[route_num-1][route_order-1]); // 変更の処理
+            scanf("%d", &change_time);
+            routes[route_num-1][route_order-1] = change_time;
+            calc_ttime(routes, ttime);  // 時間の再計算
+            sort_routes(n, routes, ttime); // バブルソートの処理
+            show_routes(routes, ttime);  // 表示
+        }
+    }
 
     return 0;
 }
