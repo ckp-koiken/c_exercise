@@ -4,6 +4,7 @@
 
 void calc_ttime(int *routep[], int ttimep[]);
 void show_routes(int *routep[], int ttimep[]);
+void sort_routes(int nelems, int *routep[], int ttimep[]);
 
 // 各経路の所要時間を計算する
 void calc_ttime(int *routep[], int ttimep[]) {
@@ -26,6 +27,21 @@ void show_routes(int *routep[], int ttimep[]) {
     }
 }
 
+// 経路をソートする
+void sort_routes(int nelems, int *routep[], int ttimep[]) {
+    printf("時間順にします\n");
+    // バブルソート
+    for (int i = 0; i < nelems-1; i++) {  // iは0から1つずつ増やす
+        for (int j = nelems-2; j >= i; j--) {  // 後ろから逆順に1まで
+            if (ttimep[j] > ttimep[j+1]) {  // 隣り合った2つで
+                int d, *rp;               // 前が小さくなるように入れ替える
+                d = ttimep[j]; ttimep[j] = ttimep[j+1]; ttimep[j+1] = d;
+                rp = routep[j]; routep[j] = routep[j+1]; routep[j+1] = rp;
+            }
+        }
+    }
+}
+
 int main(void) {
     // ルートごとの配列を用意
     int route1[] = {5, 35, 6, -1},
@@ -43,18 +59,9 @@ int main(void) {
 
     calc_ttime(routes, ttime);   // 所要時間を計算してttimeに入れる
     show_routes(routes, ttime); // 一覧を表示
+    sort_routes(n, routes, ttime);  // ソート
 
-    printf("時間順にします\n");
-    // バブルソート
-    for (int i = 0; i < n-1; i++) {  // iは0から1つずつ増やす
-        for (int j = n-2; j >= i; j--) {  // 後ろから逆順に1まで
-            if (ttime[j] > ttime[j+1]) {  // 隣り合った2つで
-                int d, *rp;               // 前が小さくなるように入れ替える
-                d = ttime[j]; ttime[j] = ttime[j+1]; ttime[j+1] = d;
-                rp = routes[j]; routes[j] = routes[j+1]; routes[j+1] = rp;
-            }
-        }
-    }
+
 
     show_routes(routes, ttime);  // 結果を表示
 
