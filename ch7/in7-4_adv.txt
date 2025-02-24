@@ -1,0 +1,5 @@
+Write a program that indicates lines
+where the ends of sentences reside. Assume
+each end of sentence has a period, a question
+mark or an exclamation mark! How can you
+achieve it?
