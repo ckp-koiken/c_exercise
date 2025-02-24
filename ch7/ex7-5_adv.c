@@ -3,15 +3,21 @@
 
 #define KEY 1
 
-int main(void) {
-    int c, cipher;
+void change_c(unsigned char letter);
 
-    while ((c = getchar()) != EOF) {
-        if (islower(c)) {
-            cipher = (c - 97 + KEY) % 26 + 97;
-            putchar(cipher);
-        } else 
-            putchar(c);
-    }
+void change_c(unsigned char letter) {
+    int cipher;
+    if (islower(letter)) {
+        cipher = (letter - 97 + KEY) % 26 + 97;
+        putchar(cipher);
+    } else 
+        putchar(letter);
+}
+
+int main(void) {
+    int c;
+
+    while ((c = getchar()) != EOF)
+        change_c(c);
     return 0;
 }
