@@ -1,4 +1,5 @@
 #include <stdio.h>
+int hash(char *pw);
 
 int hash(char *pw) {
     int i;
