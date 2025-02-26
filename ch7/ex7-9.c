@@ -4,6 +4,7 @@ int hash(char *pw) {
     int i;
     long int h;
 
+    // TODO: もっとわかりやすい計算方法がないか探す
     h = 0;
     for (i = 0; pw[i] != '\0'; i++)
         h = h * 31 + pw[i];     // hをlong intで計算
