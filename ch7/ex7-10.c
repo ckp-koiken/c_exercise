@@ -1,17 +1,25 @@
 #include <stdio.h>
+void to_binary(unsigned int n, char *bufp);
 
 void to_binary(unsigned int n, char *bufp) {
-    char *p = bufp, c;
+    char *p, c;
+    p = bufp;
 
-    while (n > 0) {                 // nのビットを下から見ていく
-        *p++ = n & 1 ? '1' : '0';   // 最下位ビットに応じて'1'か'0'をpに追加
-        n >>= 1;                    // 右シフトして最下位ビットを捨てる
+    while (n > 0) {             // nのビットを下から見ていく
+        *p = n & 1 ? '1' : '0'; // 最下位ビットに応じて'1'か'0'をpに追加
+        p++;
+        n >>= 1;                // 右シフトして最下位ビットを捨てる
     }
-    *p-- = '\0';                    // 空文字で終端し、pに末尾の文字を指させる
+    *p = '\0';                  // 空文字で終端し、pに末尾の文字を指させる
+    p--;
 
     // 逆順でbufpに2進数表現が求まっているので反転する
     while (bufp < p) {
-        c = *bufp; *bufp++ = *p; *p-- = c;
+        c = *bufp; 
+        *bufp = *p; 
+        bufp++;
+        *p = c;
+        p--;
     }
 }
 
