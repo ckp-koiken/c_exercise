@@ -3,26 +3,24 @@
 
 char *mgets(void) {
     char *p, *newp;
-    int c;
-    size_t sz = 16;      // 現在の領域サイズを覚えておく変数
+    int c, index;
+    size_t sz = 17;      // 現在の領域サイズを覚えておく変数
 
     if ((p = malloc(sz)) == NULL)   // 最初に16バイト確保
         return NULL;
+    index = 0;  // 添字を数えるための変数
     while ((c = getchar()) != EOF) {    // getcharで文字を受け付ける
         if (c == '\n')              // 改行文字で止める
             break;
-        *p = c;
-        p++;    // TODO: 要修正
-        // if (*p == '\0') {
-        //     if ((newp = realloc(p, sz+16)) == NULL)  
-        //         break;
-        //     p--;   
-        //     p = newp;
-        //     sz += 16;           
-        //     p[sz-18] = c;
-        // }
+        *(p+index) = c;
+        index++;
+        if (index % 16 == 0) {      // indexが16の倍数に達したら再度確保
+            if ((newp = realloc(p, sz+16)) == NULL)
+                break;
+            p = newp;
+        }
+        *(p+index) = '\0';    // 最後に入れた文字の次に空白文字を入れる
     }
-    p[sz-1] = '\0';     // 1番後ろに空文字を入れる
     return p;
 }
 
