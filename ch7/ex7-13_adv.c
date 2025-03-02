@@ -1,13 +1,18 @@
 #include <stdio.h>
+void show_group(char *group[]);
+
+void show_group(char *group[]) {
+    for (int i = 0; group[i] != NULL; i++) {
+        printf("%d:%s\n", i, group[i]);
+    }    
+}
 
 int main(void) {
     char *hoshi[10] = {"hiroto", "yuuma", "souta", "minato", "ren", NULL};
     int i, j, c, place;
     char name[10];
 
-    for (i = 0; hoshi[i] != NULL; i++) {
-        printf("%d:%s\n", i, hoshi[i]);
-    }
+    show_group(hoshi);
 
     printf("名前？");
     j = 0;
@@ -25,9 +30,7 @@ int main(void) {
         hoshi[i+1] = hoshi[i];
     hoshi[place] = name;
 
-    for (i = 0; hoshi[i] != NULL; i++) {
-        printf("%d:%s\n", i, hoshi[i]);
-    }
+    show_group(hoshi);
 
     return 0;
 }
