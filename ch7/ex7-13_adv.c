@@ -9,16 +9,16 @@ void show_group(char *group[]) {
 
 int main(void) {
     char *hoshi[10] = {"hiroto", "yuuma", "souta", "minato", "ren", NULL};
-    int i, j, c, place;
+    int i, c, place;
     char name[10];
 
     show_group(hoshi);
 
     printf("名前？");
-    j = 0;
+    i = 0;
     while ((c = getchar()) != '\n') {
-        name[j] = c;
-        j++;
+        name[i] = c;
+        i++;
     }
 
     printf("入れる位置？");
