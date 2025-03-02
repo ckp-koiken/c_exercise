@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 void show_group(char *group[]);
 
 void show_group(char *group[]) {
@@ -10,7 +11,12 @@ void show_group(char *group[]) {
 int main(void) {
     char *hoshi[10] = {"hiroto", "yuuma", "souta", "minato", "ren", NULL};
     int i, c, place;
-    char name[10];
+    // char name[10];  // 直接配列を確保してもよい
+    
+    // 名前を入れる領域を確保（10文字）
+    char *name;
+    if ((name = malloc(sizeof(char) * 10)) == NULL)
+        exit(1);
 
     show_group(hoshi);
 
@@ -31,6 +37,9 @@ int main(void) {
     hoshi[place] = name;
 
     show_group(hoshi);
+    
+    // 領域解放
+    free(name);
 
     return 0;
 }
