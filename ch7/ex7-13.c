@@ -23,10 +23,12 @@ int main(void) {
     scanf("%d", &to);
 
     // コピー先を空ける
-    for (i = 0; tsuki[i] != NULL; i++);
+    // 空ポインタを探す
+    for (i = 0; tsuki[i] != NULL; i++);  
+    // 後ろから順に、後ろに一つずつずらす
     for(; i >= to; i--)
         tsuki[i+1] = tsuki[i];
-    tsuki[to] = hoshi[from];
+    tsuki[to] = hoshi[from];  // ポインタをコピー
 
     show_group("Hoshi", hoshi);
     show_group("Tsuki", tsuki);
