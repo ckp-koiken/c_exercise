@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
     // argvをNULLまで探索
     for (int i = 2; argv[i] != NULL; i++) {
         printf("\"%s\" ", argv[i]);
-        for (int j = 1; argv[i][j] != '\0'; j++) {  
+        for (int j = 0; argv[i][j] != '\0'; j++) {
             // 添字ごとの文字列の中からcを探索
             if (argv[i][j] == c)
                 printf("%d文字目", j+1);
