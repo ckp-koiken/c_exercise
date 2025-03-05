@@ -13,21 +13,26 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    // コマンドライン引数のオプション
-    // 引数に-dが渡されたときの動作
-    // TODO: オプションが第1引数に存在しないとエラーを起こすのを改善
-    if (strcmp(argv[1], "-d") == 0)
+    // -dがオプションで渡されていたらフラグをたてる
+    if (!strcmp(argv[1], "-d"))  
         option = 1;
 
     int price, tax;
-    rate = atof(argv[2]);
     printf("商品の価格？");
     scanf("%d", &price);
-    tax = calctax(price);  // tax.cにあるcalctaxを呼び出す
+
+    // コマンドライン引数のオプション
     if (option == 1) {
+        rate = atof(argv[2]);   // -dが渡されたらrateに第2引数を
+        tax = calctax(price); 
         printf("calctax: price = %d, rate = %.2f, tax = %d\n", price, rate, tax);
         printf("消費税%d円、税込金額%d円\n", tax, tax+price);
-    } else 
+    } else {
+        rate = atof(argv[1]);   // オプションがなければrateに第1引数を
+        tax = calctax(price); 
         printf("消費税%d円、税込金額%d円\n", tax, tax+price);
+    }
+
+    // MEMO: unistd.hのgetopt関数を使えば色んなオプションに対応できる
     return 0;
 }
