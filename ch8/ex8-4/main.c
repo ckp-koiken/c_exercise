@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-// TODO: stack.cで関数を実装
-int push();
-int pop();
+// stack.cで実装された関数のプロトタイプ宣言
+int push(int item);
+int pop(void);
 
 int main(void) {
     int n;
