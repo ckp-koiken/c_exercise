@@ -2,6 +2,8 @@
 
 #define NELEMS(a) (sizeof(a)/sizeof(a[0]))
 
+// staticをつけているのでstack.cの終わりまで有効
+// externをつけても外ファイルからアクセスできない
 static int stack[10];   // スタックのデータを保持する配列
 static int sp = -1;     // スタックポインタ：スタックの「トップ」の添字
 
