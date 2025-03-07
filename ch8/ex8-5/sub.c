@@ -6,10 +6,9 @@
 
 // 1行を読み込む共通の処理
 static void get_line(char *p, int size) {
-    // TODO: do-while文を使わないで実装
-    do {
-        fgets(p, size, stdin);  // 入力読み取り
-    } while (*p == '\n');  // 改行だけの行は捨てる
+    fgets(p, size, stdin);
+    while (*p == '\n')  // 改行だけの行は捨てる
+        fgets(p, size, stdin);
     while (*p) {
         if (*p == '\n') {  // 改行文字があれば
             *p = '\0';     // 空文字で上書きして取り除く
