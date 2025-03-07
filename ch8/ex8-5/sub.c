@@ -6,12 +6,13 @@
 
 // 1行を読み込む共通の処理
 static void get_line(char *p, int size) {
+    // TODO: do-while文を使わないで実装
     do {
-        fgets(p, size, stdin);
-    } while (*p == '\n');
+        fgets(p, size, stdin);  // 入力読み取り
+    } while (*p == '\n');  // 改行だけの行は捨てる
     while (*p) {
-        if (*p == '\n') {
-            *p = '\0';
+        if (*p == '\n') {  // 改行文字があれば
+            *p = '\0';     // 空文字で上書きして取り除く
             break;
         }
         p++;
@@ -24,19 +25,21 @@ void read_books(void) {
 
     nbooks = 0;
     for (;;) {
+        // 題名の領域を確保
         if ((p = malloc(TITLESIZE)) == NULL) {
             perror("malloc");
             break;
         }
         printf("#%d 題名: ", nbooks);
-        get_line(p, TITLESIZE);
+        get_line(p, TITLESIZE); // 題名読み取り
+        // 入力が.だけなら確保した領域を解放して読み込み終了
         if (p[0] == '.' && p[1] == '\0') {
             free(p);
-            return;
+            return;  // 終了
         }
-        books[nbooks] = p;
+        books[nbooks] = p; // 題名を入れた文字列を配列に追加
         printf("#%d 値段: ", nbooks);
-        scanf("%d", &prices[nbooks]);
+        scanf("%d", &prices[nbooks]);  // 値段読み込み
         nbooks++;
     }
 }
@@ -47,16 +50,18 @@ void search_books(void) {
 
     for (;;) {
         printf("探す本？");
-        get_line(buf, TITLESIZE);
+        get_line(buf, TITLESIZE);  // 探す本の題名をキーボードから読み込む
         if (buf[0] == '.' && buf[1] == '\0')
+            // 入力が.なら戻る
             return;
         for (i = 0; i < nbooks; i++) {
+            // 題名が見つかったらbreak
             if (strcmp(buf, books[i]) == 0)
                 break;
         }
-        if (i < nbooks)
+        if (i < nbooks) // ループ条件が成り立っているならbreakしてきている
             printf("見つかりました。「%s」 %d円です\n", books[i], prices[i]);
-        else
+        else  // ループを回り切っても見つからない
             printf("見つかりません...\n");
     }
 }
