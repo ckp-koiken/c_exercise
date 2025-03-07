@@ -10,3 +10,4 @@ extern int prices[MAXBOOKS];
 
 // 関数プロトタイプ
 void read_books(void);
+void search_books(void);

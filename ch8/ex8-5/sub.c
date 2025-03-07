@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "myheader.h"
 
 
@@ -37,5 +38,25 @@ void read_books(void) {
         printf("#%d 値段: ", nbooks);
         scanf("%d", &prices[nbooks]);
         nbooks++;
+    }
+}
+
+void search_books(void) {
+    char buf[TITLESIZE];
+    int i;
+
+    for (;;) {
+        printf("探す本？");
+        get_line(buf, TITLESIZE);
+        if (buf[0] == '.' && buf[1] == '\0')
+            return;
+        for (i = 0; i < nbooks; i++) {
+            if (strcmp(buf, books[i]) == 0)
+                break;
+        }
+        if (i < nbooks)
+            printf("見つかりました。「%s」 %d円です\n", books[i], prices[i]);
+        else
+            printf("見つかりません...\n");
     }
 }
