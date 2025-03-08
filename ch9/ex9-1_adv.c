@@ -10,11 +10,10 @@ struct employee {
 int main(void) {
     struct employee x;
 
-    // TODO: 改行コードをなくす
     printf("氏？");
-    fgets(x.family_name, 25, stdin);
+    scanf("%s", x.family_name);
     printf("名？");
-    fgets(x.first_name, 25, stdin);
+    scanf("%s", x.first_name);
 
     printf("生年月日[年 月 日]？");
     scanf("%d", &x.birth_year);
