@@ -12,6 +12,15 @@ struct preca {
     int price, id, secret;
 };
 
+// MEMO: まとめて以下のように書ける
+// struct preca {
+//     char name[100];
+//     struct date {
+//         int year, month, day;
+//     } exp;
+//     int price, id, secret;
+// };
+
 int main(void){
     struct preca x = {"C-Preca", {2030, 12, 31}, 1000, 0, 0};
 
