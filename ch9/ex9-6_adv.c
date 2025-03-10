@@ -15,12 +15,12 @@ struct monster {
     struct skillset condition;
 };
 
-// TODO: 要リファクタ
-void print_info(struct monster x);
+void print_info(struct monster *p);
+void create_monster(struct monster *p);
 
-void print_info(struct monster x) {
-    printf("%s: ", x.name);
-    printf("HP=%d MP=%d skills=%d, %d, %d \n", x.hp, x.mp, x.condition.poison, x.condition.sleep, x.condition.paralysis);
+void print_info(struct monster *p) {
+    printf("%s: ", p->name);
+    printf("HP=%d MP=%d skills=%d, %d, %d \n", p->hp, p->mp, p->condition.poison, p->condition.sleep, p->condition.paralysis);
 }
 
 void create_monster(struct monster *p) {
@@ -50,7 +50,7 @@ int main(void) {
     for (int i = 0; i < num; i++) {
         mon[i] = template;
         create_monster(&mon[i]);
-        print_info(mon[i]);
+        print_info(&mon[i]);
     }
 
     return 0;
