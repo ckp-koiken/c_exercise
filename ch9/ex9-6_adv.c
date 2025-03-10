@@ -15,6 +15,7 @@ struct monster {
     struct skillset condition;
 };
 
+// TODO: 要リファクタ
 void print_info(struct monster x);
 
 void print_info(struct monster x) {
