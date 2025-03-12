@@ -23,6 +23,7 @@ int main(void) {
     printf("コピー先？");
     scanf("%s", dst);
     // "-"が入力されたら標準出力を指す
+    // TODO: 先頭の改行コードを削除する
     if (!strcmp(dst, "-")) {
         ofp = stdout;
     } else {
