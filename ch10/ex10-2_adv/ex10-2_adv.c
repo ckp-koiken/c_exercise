@@ -51,12 +51,14 @@ int read_monster(char *filename, struct monster *mon, int n) {
         buf_b = p + 1; // カンマの次からの残りの文字列
         *p = '\0';  // 最初のカンマを空文字で潰す。bufがnameのみになる
         strncpy(mon[i].name, buf, NAMESIZE-1); // nameを入れる
+        mon[i].name[NAMESIZE-1] = '\0';  // 長すぎた場合対策
 
         // 2つ目のカンマ(family)
         p = strchr(buf_b, ',');
         buf_c = p + 1;
         *p = '\0';
         strncpy(mon[i].family, buf_b, NAMESIZE-1); // familyを入れる
+        mon[i].family[NAMESIZE-1] = '\0';
 
         // 3つ目のカンマ(HP)
         p = strchr(buf_c, ',');
