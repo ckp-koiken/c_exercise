@@ -1,0 +1,10 @@
+# lizard 
+ newt (lizard): HP=8 MP=0 poison=0 sleep=0 paralysis=0
+# minor daemon 
+ homunculus (minor daemon): HP=19 MP=6 poison=0 sleep=1 paralysis=0
+# minor daemon 
+ quasit (minor daemon): HP=36 MP=20 poison=0 sleep=0 paralysis=1
+# slime 
+ slime (slime): HP=7 MP=0 poison=0 sleep=0 paralysis=0
+# slime 
+ bubble slime (slime): HP=24 MP=0 poison=1 sleep=0 paralysis=0

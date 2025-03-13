@@ -1,0 +1,5 @@
+slime,slime,7,0,0,0,0
+newt,lizard,8,0,0,0,0
+homunculus,minor daemon,19,6,0,1,0
+bubble slime,slime,24,0,1,0,0
+quasit,minor daemon,36,20,0,0,1
