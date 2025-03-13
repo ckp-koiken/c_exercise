@@ -14,6 +14,8 @@ struct student {
     char name[NAMESIZE];
 };
 
+int read_meibo(struct student *people, int n);
+
 // 構造体配列peopleと最大人数nを受け取って読み込んだ項目数を返す
 int read_meibo(struct student *people, int n) {
     FILE *fp;  // 入力ストリーム
