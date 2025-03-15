@@ -38,7 +38,7 @@ int main(void) {
     for (p = head; p != NULL; p = p->next)  // 要素を一つずつ
         printf("%c %s\n", p->express ? '+' : '|', p->name); // 情報を表示
 
-    // すべてのノードの領域を解法
+    // すべてのノードの領域を解放
     while (head) {  // リストにノードがある間
         p = head->next; // 次の要素へのリンクをとっておいて
         free(head); // 先頭要素の領域を解法し
