@@ -17,6 +17,7 @@ struct station *make_line(void);
 void show_line(struct station *head);
 void free_line(struct station *head);
 struct station *find_station(char *name, struct station *head);
+void show_result(char *name, int flag, struct station *head);
 
 //　線形リストを作る
 struct station *make_line(void) {
@@ -72,19 +73,10 @@ struct station *find_station(char *name, struct station *head) {
     return p;  // ループを回り切ったらpはNULL、breakしたなら見つけたノード
 }
 
-int main(void) {
-    struct station *head, *p;
-    char name[50];
-    int flag;
+// 条件に合った駅を探して表示する
+void show_result(char *name, int flag, struct station *head) {
+    struct station *p;
 
-    head = make_line();
-    show_line(head);
-    printf("駅名[無指定なら*]？");
-    scanf("%s", name);
-    printf("のぞみ停車駅[停車しない0、停車する1、無指定は2]？");
-    scanf("%d", &flag);
-
-    // TODO: 要リファクタ（関数にする）
     if (!strcmp(name, "*")) {
         // *なら線形リストをheadからNULLまで検索
         for (p = head; p != NULL; p = p->next) {
@@ -129,6 +121,21 @@ int main(void) {
                 printf("駅名%s、のぞみは停まりません\n", name);
         }
     }
+}
+
+int main(void) {
+    struct station *head, *p;
+    char name[50];
+    int flag;
+
+    head = make_line();
+    show_line(head);
+    printf("駅名[無指定なら*]？");
+    scanf("%s", name);
+    printf("のぞみ停車駅[停車しない0、停車する1、無指定は2]？");
+    scanf("%d", &flag);
+
+    show_result(name, flag, head);
         
     free_line(head);
         
