@@ -122,8 +122,7 @@ int main(void) {
                 printf("条件に合う駅はありません\n");
             else
                 printf("駅名%s、のぞみ停車駅です\n", name);
-        }
-        else { // 駅名がのぞみ停車駅でないとき
+        } else { // 駅名がのぞみ停車駅でないとき
             if (flag == 1)
                 printf("条件に合う駅はありません\n");
             else
