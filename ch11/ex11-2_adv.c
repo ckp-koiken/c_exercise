@@ -99,11 +99,12 @@ int main(void) {
                     printf("駅名%s、のぞみ停車駅です\n", p->name);
             } else if (flag == 2) {
                 // のぞみ無指定
-                // TODO: 表示の方法を変更show_line()を使う
-                printf("駅名%s\n", p->name);
-            } else {
+                if (p->express == 0)
+                    printf("駅名%s、のぞみは停車しません\n", p->name);
+                else
+                    printf("駅名%s、のぞみ停車駅です\n", p->name);
+            } else
                 printf("検索条件が間違っています\n");
-            }
         } 
     } else {
         // 駅名が指定されているなら線形リストをその駅まで進める
