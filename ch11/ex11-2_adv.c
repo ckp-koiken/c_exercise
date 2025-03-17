@@ -89,23 +89,29 @@ int main(void) {
         // *なら線形リストをheadからNULLまで検索
         for (p = head; p != NULL; p = p->next) {
             // flagの値に応じて絞り込みを変える
-            if (flag == 0) {
-                // のぞみが停車しない駅を抽出
-                if (p->express == 0)
-                    printf("駅名%s、のぞみは停車しません\n", p->name);
-            } else if (flag == 1) {
-                // のぞみが停車する駅を抽出
-                if (p->express == 1)
-                    printf("駅名%s、のぞみ停車駅です\n", p->name);
-            } else if (flag == 2) {
-                // のぞみ無指定
-                if (p->express == 0)
-                    printf("駅名%s、のぞみは停車しません\n", p->name);
-                else
-                    printf("駅名%s、のぞみ停車駅です\n", p->name);
-            } else
-                printf("検索条件が間違っています\n");
-        } 
+            switch (flag) {
+                case 0:
+                    // のぞみが停車しない駅を抽出
+                    if (p->express == 0)
+                        printf("駅名%s、のぞみは停車しません\n", p->name);
+                    break;
+                case 1:
+                    // のぞみが停車する駅を抽出
+                    if (p->express == 1)
+                        printf("駅名%s、のぞみ停車駅です\n", p->name);
+                    break;
+                case 2:
+                    // のぞみ無指定
+                    if (p->express == 0)
+                        printf("駅名%s、のぞみは停車しません\n", p->name);
+                    else
+                        printf("駅名%s、のぞみ停車駅です\n", p->name);
+                    break;
+                default:
+                    printf("検索条件が間違っています\n");
+                    break;
+            }
+        }
     } else {
         // 駅名が指定されているなら線形リストをその駅まで進める
         // find_stationを使う
