@@ -104,7 +104,6 @@ int main(void) {
     printf("%sを解放します\n", p->name);
     free(p);
 
-    // TODO: （Shizuokaを削除して）線形リストの内容をテキストファイルとして書き出す
     show_line(head);
     
     if ((fp = fopen("station_list.txt", "w")) == NULL) {
