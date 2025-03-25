@@ -84,7 +84,15 @@ struct station *find_position(char *name, struct station *head) {
             break;
         prev = p;                             // ひとつ前のノードをprevで指しておく
     }
-    if (p == NULL) {
+
+    // 「.」が入力されたとき線形リストの末尾までpを進める
+    if (strcmp(".", name) == 0) {
+        for (p = head; p != NULL; p = p->next) {
+            prev = p;       // prevにpがNULLになる直前のアドレスを指す
+        }
+    }
+    
+    if (p == NULL && strcmp(name, ".")) {
         printf("%sという駅はありません\n", name);
         exit(EXIT_FAILURE);
     }
@@ -124,7 +132,7 @@ int main(void) {
     head.next = make_line();
     show_line(head.next);
 
-    printf("どの駅の前に追加しますか？");
+    printf("どの駅の前に追加しますか[.なら末尾]？");
     scanf("%s", name);
 
     pos = find_position(name, &head);
