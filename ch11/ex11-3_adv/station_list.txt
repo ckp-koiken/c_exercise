@@ -1,0 +1,6 @@
+1 Tokyo
+1 Shinagawa
+0 Atami
+1 Nagoya
+0 Maibara
+1 Kyoto
