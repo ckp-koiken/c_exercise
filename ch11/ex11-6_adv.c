@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+int yeast(int n);
+
 int yeast(int n) {
     // ベースケース
     // 時間1のとき栄養素は1
