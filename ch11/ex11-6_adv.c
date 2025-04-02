@@ -9,15 +9,17 @@ int yeast(int n) {
     // 1時間経過すると酵母は2倍に分裂して
     // それぞれ栄養素を生成する
     return 1 + 2 * yeast(n - 1);
-    
 }
 
 int main(void) {
-    int n;
+    int n, count;
     printf("時間？");
     scanf("%d", &n);
     
-    printf("%d", yeast(n));
-    printf("\n");
+    count = yeast(n);
+    for (int i = 0; i < count; i++) {
+        printf("*");
+    }
+    printf(" %d\n", count);
     return 0;
 }
